@@ -26,7 +26,7 @@
                         </div>
                         <div class="question bg-white p-3 border-bottom">
                             <div class="d-flex flex-row align-items-center question-title">
-                                <img  class="mx-auto d-block img-fluid"  src="puplic/assets/img/{{$question->imgpath}} " width="100px" >
+                                <img  class="mx-auto d-block img-fluid"  src="/images/{{ $question->imgpath }}"  width="100px" >
 
                              </div>
                         </div>

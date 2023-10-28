@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -31,11 +35,23 @@ class QuestionController extends Controller
     {
         $request->validate([
             'questiontext' => 'required',
+           /* 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',**/
         ]
     );
-   $newimg = uniqid().'-'.$request->questiontext.'.'.$request->imgpath->extension();
+  /* $newimg = uniqid().'-'.$request->questiontext.'.'.$request->imgpath->extension();
     $destinationPath = '/puplic/assets/img/';
-    $request->imgpath->move($destinationPath, $newimg);
+    $request->imgpath->move($destinationPath, $newimg);*/
+    $input = $request->all();
+
+        if ($imgpath = $request->file('imgpath')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $imgpath->getClientOriginalExtension();
+            $imgpath->move($destinationPath, $profileImage);
+            $input['imgpath'] = "$profileImage";
+        }
+
+       Question::create($input);
+
 
 
 
@@ -47,7 +63,7 @@ class QuestionController extends Controller
     }*/
 
 
-   Question::create([
+  /* Question::create([
         'questiontext'=>$request->input('questiontext'),
         'imgpath'=> $newimg,
 
@@ -92,9 +108,25 @@ class QuestionController extends Controller
 
         ]);
 
-         /**$company->fill($request->post())->save();ذحاح */
+         /**$company->fill($request->post())->save();ذحاح
+          *
+
+         */
+        /*   fault by maram
         $question->update($request->all());
-        $question->update($validated);
+        $question->update($validated);*/
+        $input = $request->all();
+
+        if ($imgpath = $request->file('imgpath')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $imgpath->getClientOriginalExtension();
+            $imgpath->move($destinationPath, $profileImage);
+            $input['imgpath'] = "$profileImage";
+        }else{
+            unset($input['imgpath']);
+        }
+
+        $question->update($input);
 
         return redirect()->route('questions.index')->with('success','تم تعديل السؤال بنجاح');
 

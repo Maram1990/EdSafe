@@ -17,14 +17,14 @@ use App\Http\Controllers\QuestionController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/m', function () {
     return view('index');
 });
 
-Route::resource('questions',QuestionController::class);
+Route::resource('questions',QuestionController::class)->middleware( 'is_admin');
 Route::resource('questions.answers',AnswerController::class);
 
 

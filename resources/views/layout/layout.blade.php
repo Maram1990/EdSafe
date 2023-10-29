@@ -50,10 +50,9 @@
       <nav id="navbar"   class="navbar ms-auto me-5">
         <ul>
           <li><a class="nav-link scrollto active" href=" {{ url('/')}}">الرئيسية</a></li>
-          <li><a class="nav-link scrollto" href="#services">مكتبة</a></li>
+          <li><a class="nav-link scrollto" href="#services">تعليمات</a></li>
           <li><a class="nav-link scrollto " href=" {{ url('/signs')}}">موسوعة الإشارات</a></li>
-          <li><a class="nav-link scrollto " href="#pricing">تعليمات</a></li>
-          <li><a class="nav-link scrollto" href="#hero">اختبر نفسك</a></li>
+          <li><a class="nav-link scrollto" href="{{ url('/home')}}">اختبر نفسك</a></li>
           <li><a class="nav-link scrollto" href=" {{ url('/contact')}}">اتصل بنا</a></li>
           <li><a class="getstarted scrollto" href="{{ url('login')}}">login</a></li>
           <li><a class="getstarted scrollto" href="{{ url('register')}}">register</a></li>

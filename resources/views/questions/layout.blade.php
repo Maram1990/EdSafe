@@ -52,8 +52,20 @@
 
 
           <li><a class="nav-link scrollto " href=" {{ url('/questions')}}">بنك الأسئلة</a></li>
+          <li >
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
 
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                
+                @csrf
+            </form>
+          </li>
+
+          <!--<li><a class="getstarted scrollto" href="/logout">تسجيل الخروج</a></li>-->
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

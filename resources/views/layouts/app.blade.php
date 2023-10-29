@@ -19,7 +19,7 @@
 <body>
     <div id="app">
         <nav style="color: #f6f7ff" class="navbar navbar-expand-md navbar-light shadow-sm">
-            <div class="container">
+            <div style="font-size: 20px;" class="container">
                 <a class="navbar-brand" style="color: #2d405f" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>

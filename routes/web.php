@@ -37,3 +37,9 @@ Route::resource('contacts',ContactController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/posts', function () {
+    return view('welcomelivewire');
+});
+
+Route::get('/rules', [App\Http\Controllers\PostController::class, 'index']);

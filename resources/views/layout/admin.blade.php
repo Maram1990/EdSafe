@@ -52,6 +52,7 @@
 
 
           <li><a class="nav-link scrollto " href=" {{ url('/questions')}}">بنك الأسئلة</a></li>
+          <li><a class="nav-link scrollto " href=" {{ url('/posts')}}">المنشورات</a></li>
 
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
         </ul>

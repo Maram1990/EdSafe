@@ -5,7 +5,7 @@
 <br>
 
 
-<div class="container   mx-auto mt-5">
+<div class="container col-lg-6  mx-auto mt-5">
     <div class="d-flex justify-content-center row">
         <div class="col-md-10 col-lg-10">
             @foreach ($questions as $question)
@@ -22,7 +22,7 @@
                 </div>
                 <div class="question bg-white p-3 border-bottom">
 
-                    <div class="d-flex flex-row align-items-center question-title">
+                    <div class="d-flex flex-row   question-title">
                         <img  class="mx-auto d-block img-fluid"  src="/images/{{ $question->imgpath }}"  width="200px" >
 
                      </div>

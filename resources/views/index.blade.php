@@ -1,7 +1,7 @@
 @extends('layout.layout')
 
 @section('content')
-  <!-- ======= Hero Section ======= -->
+  <!-- ======= Hero Section
   <section id="hero" class="d-flex align-items-center">
 
     <div class="container d-flex flex-column align-items-center justify-content-center" data-aos="fade-up">
@@ -11,14 +11,15 @@
       <img src="public/assets/img/Testbuddy (1).png" class="img-fluid hero-img" alt="dfghjkl" data-aos="zoom-in" data-aos-delay="150">
     </div>
   </section>
-
+  ======= -->
 
   <main id="main">
 
 
 
 
-
+<br>
+<br>
     <!-- ======= Features Section ======= -->
     <section id="features" class="features" data-aos="fade-up">
       <div class="container">
@@ -26,24 +27,6 @@
         <div class="section-title">
           <h2>Features</h2>
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row content">
-          <div class="col-md-5" data-aos="fade-right" data-aos-delay="100">
-            <img src="public/assets/img/cellphone.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-md-7 pt-4" data-aos="fade-left" data-aos-delay="100">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bi bi-check"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check"></i> Ullam est qui quos consequatur eos accusamus.</li>
-            </ul>
-          </div>
         </div>
 
         <div class="row content">

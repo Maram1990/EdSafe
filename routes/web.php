@@ -16,18 +16,13 @@ use App\Http\Controllers\QuestionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::view('/', 'index');
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::view('/signs', 'signs');
 
-Route::get('/signs', function () {
-    return view('signs');
-});
+Route::view('/posts','welcomelivewire');
 
-Route::get('/contact', function () {
-    return view('contactscreate');
-});
+Route::view('/contact','contactscreate');
 
 Route::resource('questions',QuestionController::class)->middleware( 'is_admin');
 Route::resource('questions.answers',AnswerController::class);
@@ -38,8 +33,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/posts', function () {
-    return view('welcomelivewire');
-});
+ 
 
 Route::get('/rules', [App\Http\Controllers\PostController::class, 'index']);

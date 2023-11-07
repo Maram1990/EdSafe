@@ -31,8 +31,8 @@
 
                 <div class="question bg-white p-3 border-bottom">
                    @foreach ($question->answer as $answer )
-                    <div class="ans ml-2">
-                    <label class="radio"> <input type="radio" name="brazil" value="{{$answer->istrue}}"> <span>{{$answer->title}}</span>
+                    <div class="answer @if ($answer->istrue) correct-answer @else wrong-answer @endif">
+                    <label class="radio"> <input type="radio" name="ans" value="{{$answer->is_true}}" onchange="this.style.fontsize='35px'"> <span>{{$answer->title}}</span>
                     </label>
                     </div>
                     @endforeach

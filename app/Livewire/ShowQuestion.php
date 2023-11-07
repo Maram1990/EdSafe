@@ -10,7 +10,7 @@ class ShowQuestion extends Component
 
     public function addmark($answer)
     {
-        $this->mark =+ $answer->istrue;
+        $this->mark =+ ($answer->istrue);
     }
     public function render()
 

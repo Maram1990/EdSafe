@@ -30,8 +30,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="istrue">Active</label><br>
-            <input type="checkbox"  {{ $answer->istrue ? 'checked' : '' }}/>
+            <label for="istrue">صحيح</label><br>
+            <input type="checkbox"  {{ $answer->istrue ? 'نعم' : 'لا' }}/>
         </div>
 
 

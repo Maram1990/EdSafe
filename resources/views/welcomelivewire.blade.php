@@ -1,5 +1,6 @@
 @extends('questions.layout')
 @section('content')
+@livewireStyles
 <br>
 <br>
 <br>

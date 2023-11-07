@@ -24,6 +24,8 @@ Route::view('/posts','welcomelivewire');
 
 Route::view('/contact','contactscreate');
 
+Route::get('/rules', [App\Http\Controllers\PostController::class, 'index']);
+
 Route::resource('questions',QuestionController::class)->middleware( 'is_admin');
 Route::resource('questions.answers',AnswerController::class);
 Route::resource('contacts',ContactController::class);
@@ -35,4 +37,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
  
 
-Route::get('/rules', [App\Http\Controllers\PostController::class, 'index']);
+

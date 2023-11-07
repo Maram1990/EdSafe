@@ -42,7 +42,7 @@ class AnswerController extends Controller
      */
     public function show(Answer $answer)
     {
-        return view('answers.show', compact('country_id', 'city'));
+        return view('answers.show', compact('question_id', 'answers'));
     }
 
     /**

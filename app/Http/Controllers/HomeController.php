@@ -25,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-       $questions = question::with('answer')->inRandomOrder()->get();
+       $questions = question::with(['answer'=>function($query){$query->inRandomOrder();}])->inRandomOrder()->get();
        return view('home',compact('questions'));
     }
+
+    
 }

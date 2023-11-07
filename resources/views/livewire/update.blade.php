@@ -10,6 +10,6 @@
         <textarea class="form-control" id="content" wire:model="content" placeholder="اخل نص"></textarea>
         @error('content') <span class="text-danger">{{ $message }}</span>@enderror
     </div>
-    <button wire:click.prevent="update()" class="btn btn-dark">Update</button>
-    <button wire:click.prevent="cancel()" class="btn btn-danger">Cancel</button>
+    <button wire:click.prevent="update()" class="btn btn-dark">تحديث</button>
+    <button wire:click.prevent="cancel()" class="btn btn-danger">الغاء</button>
 </form>

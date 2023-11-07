@@ -15,16 +15,6 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <style>
-        .correct-answer {
-    background-color:lightgreen;
-}
-
-.wrong-answer {
-    background-color:lightsalmon;
-}
-    </style>
-
 </head>
 <body>
     <div id="app">
@@ -33,6 +23,7 @@
                 <a class="navbar-brand" style="color: #2d405f" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
+                <h2> ابدأ بتقييم نفسك </h2>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -59,6 +50,7 @@
                                 </li>
                             @endif
                         @else
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

@@ -20,20 +20,18 @@ Route::view('/', 'index');
 
 Route::view('/signs', 'signs');
 
-Route::view('/posts','welcomelivewire');
-
 Route::view('/contact','contactscreate');
 
 Route::get('/rules', [App\Http\Controllers\PostController::class, 'index']);
 
 Route::resource('questions',QuestionController::class)->middleware( 'is_admin');
-Route::resource('questions.answers',AnswerController::class);
+Route::resource('questions.answers',AnswerController::class)->middleware( 'is_admin');
+Route::view('/posts','welcomelivewire')->middleware( 'is_admin');
 Route::resource('contacts',ContactController::class);
-
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test', [App\Http\Controllers\HomeController::class, 'index'])->name('test');
 
  
 

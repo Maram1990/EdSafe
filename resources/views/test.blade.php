@@ -32,7 +32,7 @@
                 <div class="question bg-white p-3 border-bottom">
                    @foreach ($question->answer as $answer )
                     <div class="answer @if ($answer->istrue) correct-answer @else wrong-answer @endif">
-                    <label class="radio"> <input type="radio" name="ans" value="{{$answer->is_true}}" onchange="this.style.fontsize='35px'"> <span>{{$answer->title}}</span>
+                    <label class="radio"> <input type="radio" name="ans" value="{{$answer->istrue}}" onmouseover="bigger(this)"> <span>{{$answer->title}}</span>
                     </label>
                     </div>
                     @endforeach
@@ -49,5 +49,10 @@
         </div>
     </div>
 </div>
-
+<script>
+    function bigger(obj) {
+      obj.style.fontSize = "40px"
+    }
+    </script>
+    
 @endsection

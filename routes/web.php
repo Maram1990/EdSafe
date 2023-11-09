@@ -28,7 +28,7 @@ Route::resource('contacts',ContactController::class);
 
 Auth::routes();
 
-Route::get('/test', [App\Http\Controllers\HomeController::class, 'index'])->name('test');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('is_admin')->group(function () {
     Route::resource('questions',QuestionController::class);

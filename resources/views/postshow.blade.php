@@ -1,6 +1,6 @@
 @extends('layout.layout')
 @section('content')
-<main id="main">
+ 
 
 
 
@@ -57,6 +57,5 @@
       </div>
     </section><!-- End Portfolio Details Section -->
    
-  </main><!-- End #main -->
 
 @endsection

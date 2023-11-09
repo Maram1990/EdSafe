@@ -22,17 +22,18 @@ Route::view('/signs', 'signs');
 
 Route::view('/contact','contactscreate');
 
-Route::get('/rules', [App\Http\Controllers\PostController::class, 'index']);
-
-Route::resource('questions',QuestionController::class)->middleware( 'is_admin');
-Route::resource('questions.answers',AnswerController::class)->middleware( 'is_admin');
-Route::view('/posts','welcomelivewire')->middleware( 'is_admin');
+Route::get('/rules', [App\Http\Controllers\PostController::class, 'index'])->name('posts');
+Route::get('posts/{post}', [App\Http\Controllers\PostController::class, 'show' ])->name('detials');
 Route::resource('contacts',ContactController::class);
 
 Auth::routes();
 
 Route::get('/test', [App\Http\Controllers\HomeController::class, 'index'])->name('test');
 
- 
+Route::middleware('is_admin')->group(function () {
+    Route::resource('questions',QuestionController::class);
+    Route::resource('questions.answers',AnswerController::class);
+    Route::view('/posts','welcomelivewire');
+});
 
 

@@ -17,7 +17,7 @@
           <div class="icon-box">
             <div class="icon"><i class="bx bxl-dribbble"></i></div>
             <h3 class="title"><a href="">{{ $post->title}}</a></h3>
-            <!--  <p class="description">{{ $post->content}}</p>  -->
+            <a class="btn btn-primary" href="{{ route('detials',$post->id) }}">قراءة</a>
           </div>
         </div>
         @endforeach

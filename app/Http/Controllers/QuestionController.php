@@ -47,39 +47,11 @@ class QuestionController extends Controller
 
        Question::create($input);
 
-
-
-
-   /* if ($imgpath = $request->file('image')) {
-        $destinationPath = 'puplic/assets/img/';
-        $profileImage = $imgpath->getClientOriginalExtension();
-        $imgpath->move($destinationPath, $profileImage);
-        $question['imgpath'] = "$profileImage";
-    }*/
-
-
-  /* Question::create([
-        'questiontext'=>$request->input('questiontext'),
-        'imgpath'=> $newimg,
-
-    ]);
-    /*$input = $request->all();
-
-        if ($imgpath = $request->file('image')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $imgpath->getClientOriginalExtension();
-            $imgpath->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
-
-        Question::create($input);*/
     return redirect()->route('questions.index')->with('success','q created successfully.');
 
     }
 
     
-    
-
     public function show(Question $question)
     {
         return view('questions.show',compact('question'));
@@ -103,13 +75,7 @@ class QuestionController extends Controller
 
         ]);
 
-         /**$company->fill($request->post())->save();ذحاح
-          *
-
-         */
-        /*   fault by maram
-        $question->update($request->all());
-        $question->update($validated);*/
+         
         $input = $request->all();
 
         if ($imgpath = $request->file('imgpath')) {

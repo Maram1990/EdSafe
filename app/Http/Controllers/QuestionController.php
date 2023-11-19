@@ -11,22 +11,22 @@ class QuestionController extends Controller
     {
         $this->middleware('auth');
     }
-     
+
 
     public function index()
     {
-        $questions = Question::latest()->paginate(12);
+        $questions = Question::latest()->paginate(6);
         return view('questions.index',compact('questions'));
     }
 
-   
+
 
     public function create()
     {
         return view('questions.create');
     }
 
-     
+
 
     public function store(Request $request)
     {
@@ -35,7 +35,7 @@ class QuestionController extends Controller
            /* 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',**/
         ]
     );
-  
+
     $input = $request->all();
 
         if ($imgpath = $request->file('imgpath')) {
@@ -51,22 +51,22 @@ class QuestionController extends Controller
 
     }
 
-    
+
     public function show(Question $question)
     {
         return view('questions.show',compact('question'));
     }
 
-    
-    
+
+
 
     public function edit(Question $question)
     {
       return view('questions.edit',compact('question'));
     }
 
-    
-    
+
+
 
     public function update(Request $request, Question $question)
     {
@@ -75,7 +75,7 @@ class QuestionController extends Controller
 
         ]);
 
-         
+
         $input = $request->all();
 
         if ($imgpath = $request->file('imgpath')) {
@@ -93,7 +93,7 @@ class QuestionController extends Controller
 
     }
 
-    
+
 
     public function destroy(Question $question)
     {

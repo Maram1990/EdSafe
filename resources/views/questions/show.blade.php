@@ -1,8 +1,11 @@
 @extends('questions.layout')
+<br>
+<br>
+
 @section('content')
 <br>
     <div class="row">
-        <div class="col-lg-12 margin-tb">
+        <div class="col-lg-8 margin-tb">
             <div class="pull-left">
                 <h2> عرض السؤال </h2>
             </div>
@@ -15,7 +18,7 @@
     <div class="row">
         <div class="container   mx-auto mt-5">
             <div class="d-flex justify-content-center row">
-                <div class="col-md-10 col-lg-10">
+                <div class="col-md-8 col-lg-8">
                     <div class="border">
 
 
@@ -31,7 +34,7 @@
                              </div>
                         </div>
 
-                            <div class="question bg-white p-3 border-bottom">
+                            <div class="question bg-white p-3 ">
 
 
                                 @foreach ( $question->answer as $answer)
@@ -48,7 +51,9 @@
                     </div>
 
             </div>
+            <br>
         </div>
+        <br>
 
 
         <br>

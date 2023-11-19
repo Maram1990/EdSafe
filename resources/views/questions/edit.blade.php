@@ -1,4 +1,9 @@
 @extends('questions.layout')
+<br>
+<br>
+<br>
+<br>
+
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -8,23 +13,24 @@
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('questions.index') }}"> عودة</a>
             </div>
+            <br>
         </div>
     </div>
 
-
+<div class="container justify-content-center">
 
     <form action="{{ route('questions.update',$question->id) }}" method="POST">
         @csrf
         @method('PUT')
 
          <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-8 col-sm-8 col-md-8">
                 <div class="form-group">
                     <strong>نص السؤال</strong>
                     <input type="text" name="questiontext" value="{{ $question->questiontext }}" class="form-control"  >
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-8 col-sm-8 col-md-8">
                 <strong>اختر صورة</strong>
                     <input class="form-control" type="file" name="imgpath" id="imgpath">
                     <img src="/images/{{ $question->imgpath }}" width="300px">
@@ -33,10 +39,11 @@
               </div>
 
 
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <div class="pull-right">
               <button type="submit" class="btn btn-primary">حفظ</button>
             </div>
         </div>
 
     </form>
+</div>
 @endsection

@@ -9,6 +9,7 @@
 <form action="{{ route('questions.answers.update',[$answer->question_id, $answer->id]) }}" method="POST">
     @csrf
     @method('PUT')
+    
 
      <div class="row justify-content-center ">
         <div class="col-xs-8 col-sm-8 col-md-8 ">
@@ -19,7 +20,7 @@
         </div>
         <div class="col-xs-8 col-sm-8 col-md-8 ">
             <label for="istrue">صحيح</label><br>
-            <input type="checkbox" name="istrue" id="istrue" value="1" {{ ($answer->istrue==1 ? 'checked' : '' )}}>
+            <input type="checkbox" name="istrue" id="istrue" value="1"  {{ ($answer->istrue==1 ? 'checked' : '' )}}>
         </div>
         <br>
         <br>

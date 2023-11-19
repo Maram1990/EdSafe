@@ -58,7 +58,14 @@ class AnswerController extends Controller
      */
     public function update($question_id,Request $request, Answer $answer)
     {
-        $answer->update($request->all());
+
+        $answer->update([
+             
+            'title' => $request->input('title'),
+            'istrue' => $request->has('istrue') ? true : false
+        ]);
+
+
         return redirect()->route('questions.answers.index', $question_id);
     }
 

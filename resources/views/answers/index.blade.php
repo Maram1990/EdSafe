@@ -10,7 +10,7 @@
             <h2>الأجوبة</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('questions.index') }}">عودة للسؤال</a>
+            <a class="btn btn-secondary" href="{{ route('questions.index') }}">عودة للسؤال</a>
             <a class="btn btn-success" href="{{ route('questions.answers.create', $question_id) }}"> إضافة جواب جديد</a>
         </div>
     </div>

@@ -1,6 +1,6 @@
 @extends('layout.layout')
 @section('content')
- 
+
 
 
 
@@ -9,7 +9,7 @@
       <div class="container">
 
         <ol>
-          <li><a class="btn btn-primary" href="{{ route('posts') }}"> عودة</a></li>
+          <li><a  href="{{ route('rules') }}"> عودة </a></li>
           <li>تفاصيل</li>
         </ol>
 
@@ -43,7 +43,7 @@
             </div>
           </div>
 
-          
+
             <div class="portfolio-description">
               <h2>{{$post->title}}</h2>
               <p>
@@ -56,6 +56,6 @@
 
       </div>
     </section><!-- End Portfolio Details Section -->
-   
+
 
 @endsection

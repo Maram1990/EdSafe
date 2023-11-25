@@ -27,8 +27,8 @@
             <td>{{ $post->title }}</td>
             <td>{{ $post->content }}</td>
             <td>
-            <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">تعديل</button>
-                <button wire:click="delete({{ $post->id }})" wire:confirm="Are you sure you want to delete this post?" class="btn btn-danger btn-sm">حذف</button>
+            <button type="button" wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">تعديل</button>
+                <button type="button" wire:click="delete({{ $post->id }})" wire:confirm="Are you sure you want to delete this post?" class="btn btn-danger btn-sm">حذف</button>
             </td>
         </tr>
         @endforeach

@@ -22,7 +22,7 @@ Route::view('/signs', 'signs');
 
 Route::view('/contact','contactscreate');
 
-Route::get('/rules', [App\Http\Controllers\PostController::class, 'index'])->name('posts');
+Route::get('/rules', [App\Http\Controllers\PostController::class, 'index'])->name('rules');
 Route::get('posts/{post}', [App\Http\Controllers\PostController::class, 'show' ])->name('detials');
 Route::resource('contacts',ContactController::class);
 

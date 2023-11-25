@@ -20,16 +20,16 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Krub:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  
+  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+
 
   <!-- =======================================================
   * Template Name: Bikin
@@ -52,10 +52,10 @@
       <nav id="navbar"   class="navbar ms-auto me-5">
         <ul>
           <li><a class="nav-link scrollto active" href=" {{ url('/')}}">الرئيسية</a></li>
-          <li><a class="nav-link scrollto" href=" {{url('posts')}}">تعليمات</a></li>
-          <li><a class="nav-link scrollto " href=" {{ url('/signs')}}">موسوعة الإشارات</a></li>
-          <li><a class="nav-link scrollto" href="{{ url('/home')}}">اختبر نفسك</a></li>
-          <li><a class="nav-link scrollto" href=" {{ url('/contact')}}">اتصل بنا</a></li>
+          <li><a class="nav-link scrollto "   href=" {{url('rules')}}">تعليمات</a></li>
+          <li><a class="nav-link scrollto "   href=" {{ url('/signs')}}">موسوعة الإشارات</a></li>
+          <li><a class="nav-link scrollto "   href="{{ url('/home')}}">اختبر نفسك</a></li>
+          <li><a class="nav-link scrollto "   href=" {{ url('/contact')}}">اتصل بنا</a></li>
           <li><a class="getstarted scrollto" href="{{ url('login')}}">login</a></li>
           <li><a class="getstarted scrollto" href="{{ url('register')}}">register</a></li>
         </ul>

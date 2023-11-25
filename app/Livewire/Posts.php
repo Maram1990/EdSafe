@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class Posts extends Component
 {
+    
     public $posts, $slug, $title, $content, $post_id;
     public $updateMode = false;
 

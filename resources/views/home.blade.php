@@ -32,14 +32,14 @@
                 <div class="question bg-white p-3 border-bottom">
                    @foreach ($question->answer as $answer )
                     <div class="answer @if ($answer->istrue) correct-answer @else wrong-answer @endif">
-                    <label class="radio"> <input type="radio" name="ans" value="{{$answer->istrue}}" onmouseover="bigger(this)"> <span>{{$answer->title}}</span>
+                    <label class="radio"> <input type="radio" name="ans" value="{{$answer->istrue}}" onmouseover="this.style.fontSize='35px'"> <span>{{$answer->title}}</span>
                     </label>
                     </div>
                     @endforeach
                 </div>
 
                 <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
-                <button class="btn btn-primary d-flex align-items-center btn-danger" type="button">previous<i class="fa fa-angle-left mt-1 mr-1"></i></button>
+
                 <button class="btn btn-primary border-success align-items-center btn-success" type="button">التالي<i class="fa fa-angle-right ml-2"></i></button></div>
 
             </div>
@@ -54,5 +54,5 @@
       obj.style.fontSize = "40px"
     }
     </script>
-    
+
 @endsection

@@ -18,41 +18,44 @@
     <div class="row">
         <div class="container   mx-auto mt-5">
             <div class="d-flex justify-content-center row">
-                <div class="col-md-8 col-lg-8">
-                    <div class="border">
+            <div class="col-md-8 col-lg-8">
+                <div class="border">
 
 
-                        <div class="question bg-white p-3 border-bottom">
-                            <div class="d-flex flex-row align-items-center question-title">
+                      <div class="question bg-white p-3 border-bottom">
+                              <div class="d-flex flex-row align-items-center question-title">
 
-                                <h4 class="mt-1 ml-2">{{$question->questiontext}}</h4>
-                        </div>
-                        <div class="question bg-white p-3 border-bottom">
-                            <div class="d-flex flex-row align-items-center question-title">
-                                <img  class="mx-auto d-block img-fluid"  src="/images/{{ $question->imgpath }}"  width="200px" >
+                                  <h4 class="mt-1 ml-2">{{$question->questiontext}}</h4>
+                          </div>
+                          <div class="question bg-white p-3 border-bottom">
+                              <div class="d-flex flex-row align-items-center question-title">
+                                  <img  class="mx-auto d-block img-fluid"  src="/images/{{ $question->imgpath }}"  width="200px" >
 
-                             </div>
-                        </div>
+                               </div>
+                          </div>
 
-                            <div class="question bg-white p-3 ">
-
-
-                                @foreach ( $question->answer as $answer)
+                              <div class="question bg-white p-3 ">
 
 
-                                <div class="ans ml-2">
+                                  @foreach ( $question->answer as $answer)
 
-                                <li>{{$answer->title}}</li>
 
-                                </div>
-                                <br>
-                               @endforeach
-                            </div>
-                    </div>
+                                  <div class="ans ml-2">
 
-            </div>
+                                  <li>{{$answer->title}}</li>
+
+                                  </div>
+                                  <br>
+                                 @endforeach
+                              </div>
+                      </div>
+
+                </div>
             <br>
+            </div>
+            </div>
         </div>
+    </div>
         <br>
 
 

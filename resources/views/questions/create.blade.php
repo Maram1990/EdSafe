@@ -24,21 +24,21 @@
     @csrf
 
      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-8 col-sm-8 col-md-8">
             <div class="form-group">
                 <strong>نص السؤال</strong>
                 <input type="text" name="questiontext" class="form-control"  >
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="col-xs-8 col-sm-8 col-md-8">
             <label for="imgpath" class="form-label">اختر صورة
                 <input class="form-control" type="file" name="imgpath" id="imgpath">
             </label>
 
           </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+        <div class="col-xs-8 col-sm-8 col-md-8 text-center">
                 <button type="submit" class="btn btn-primary">حفظ</button>
         </div>
     </div>

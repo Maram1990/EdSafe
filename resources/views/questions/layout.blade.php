@@ -10,9 +10,6 @@
   <meta content="" name="keywords">
 
 
-  <!-- Favicons -->
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
 
 
@@ -30,6 +27,8 @@
   <!-- Template Main CSS File -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
+  @livewireScripts
+
   <!-- =======================================================
   * Template Name: Bikin
   * Updated: Jul 27 2023 with Bootstrap v5.3.1
@@ -45,7 +44,7 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><img src="public/assets/img/لوغو وزارة النقل  للخلفية.png" alt="" class="img-fluid"></a><a href=" {{ url('/')}}">السلامة المرورية</a></h1>
+      <h1 class="logo"><a href="{{ url('/')}}" class="logo"><img src="/assets/img/لوغو وزارة النقل  للخلفية.png" alt="" class="img-fluid"></a><a href=" {{ url('/')}}">السلامة المرورية</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 

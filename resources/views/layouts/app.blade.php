@@ -15,15 +15,6 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <style>
-        .correct-answer {
-    background-color:lightgreen;
-}
-
-.wrong-answer {
-    background-color:lightsalmon;
-}
-    </style>
 
 </head>
 <body>

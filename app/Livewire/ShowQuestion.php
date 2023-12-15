@@ -2,18 +2,19 @@
 
 namespace App\Livewire;
 
+use Livewire\WithPagination;
+
 use App\Models\Question;
 use Livewire\Component;
 
 class ShowQuestion extends Component
 {
-    public $mark=0;
 
-     
+    use WithPagination;
     public function render()
 
     {
-        $this->questions = Question::with(['answer'=>function($query){$query->inRandomOrder();}])->inRandomOrder()->get();
-        return view('livewire.show-question');
+       $questions = Question::with(['answer'=>function($query){$query->inRandomOrder();}])->inRandomOrder()->limit(3)->get();
+        return view('livewire.show-question',compact('questions'));
     }
 }

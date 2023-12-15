@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Livewire\ShowQuestion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AnswerController;
@@ -36,4 +37,5 @@ Route::middleware('is_admin')->group(function () {
     Route::view('/posts','welcomelivewire');
 });
 
+Route::get('/test', ShowQuestion::class);
 

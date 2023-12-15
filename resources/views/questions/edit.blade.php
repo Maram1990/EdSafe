@@ -1,4 +1,5 @@
 @extends('questions.layout')
+<main id="main">
 <br>
 <br>
 <br>
@@ -46,4 +47,5 @@
 
     </form>
 </div>
+</main>
 @endsection

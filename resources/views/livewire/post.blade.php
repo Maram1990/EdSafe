@@ -17,7 +17,7 @@
             <th>#</th>
             <th>العنوان</th>
             <th>النص</th>
-            <th width="150px">Action</th>
+            <th width="150px">العمليات</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +32,10 @@
             </td>
         </tr>
         @endforeach
+
+
     </tbody>
+
 </table>
+{{ $posts->links() }}
 </div>

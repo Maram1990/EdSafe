@@ -16,7 +16,7 @@ class PostsTableSeeder extends Seeder
         \App\Models\Post::factory(10)->create();
 
         \App\Models\Post::factory()->create([
-            'title' => 'tile',
+            'title' => 'title',
             'content' => 'testcontent',
          ]);
 

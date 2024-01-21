@@ -32,7 +32,7 @@ class QuestionController extends Controller
     {
         $request->validate([
             'questiontext' => 'required',
-           /* 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',**/
+           /* 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',**/
         ]
     );
 
@@ -84,7 +84,7 @@ class QuestionController extends Controller
             $imgpath->move($destinationPath, $profileImage);
             $input['imgpath'] = "$profileImage";
         }else{
-            unset($input['imgpath']);
+            $input['imgpath'] = $question->imgpath; // Retain the existing image path
         }
 
         $question->update($input);
@@ -98,6 +98,10 @@ class QuestionController extends Controller
     public function destroy(Question $question)
     {
         $question->delete();
-        return redirect()->route('questions.index')->with('success','q deleted successfully');
+        if (request()->ajax()) {
+            return response()->json(['success' => true]);
+        }
+
+        return redirect()->route('questions.index')->with('success', 'تم حذف السؤال بنجاح');
     }
 }

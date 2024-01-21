@@ -33,7 +33,7 @@
             </div>
             <div class="col-xs-8 col-sm-8 col-md-8">
                 <strong>اختر صورة</strong>
-                    <input class="form-control" type="file" name="imgpath" id="imgpath">
+                    <input class="form-control" type="file" name="imgpath">
                     <img src="/images/{{ $question->imgpath }}" width="300px">
 
 

@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <label for="imgpath" class="form-label"><strong>ختر صورة</strong>
+                            <label for="imgpath" class="form-label"><strong>ختر صورةا</strong>
                                 <input class="form-control" type="file" name="imgpath" id="imgpath">
                             </label>
 

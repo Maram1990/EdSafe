@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -12,11 +13,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->paginate(12);
+        $posts = Post::latest()->get()->paginate(3);
         return view('posts',compact('posts'));
     }
 
-    
+
     public function show(Post $post)
     {
         return view('postshow',compact('post'));

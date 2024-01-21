@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Post;
+
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Posts extends Component
 {
-    
-    public $posts, $slug, $title, $content, $post_id;
+
+    public $Posts, $slug, $title, $content, $post_id;
     public $updateMode = false;
 
     /**
@@ -16,10 +18,14 @@ class Posts extends Component
      *
      * @var array
      */
+
+     use WithPagination;
+
+
     public function render()
     {
-        $this->posts = Post::latest()->get();
-        return view('livewire.post');
+       $posts = Post::paginate(5);
+        return view('livewire.post',compact('posts'));
     }
 
     /**

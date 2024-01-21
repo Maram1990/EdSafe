@@ -17,7 +17,9 @@ use App\Http\Controllers\QuestionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::view('/', 'index')->name('index');
+Route::view('/','splash');
+
+Route::view('/index', 'index')->name('index');
 
 Route::view('/signs', 'signs');
 

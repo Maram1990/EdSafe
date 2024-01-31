@@ -1,18 +1,18 @@
 @extends('layouts.responsive')
 @section('content')
-@livewireStyles
+
 <br>
 <br>
 
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-11">
             <div class="card">
                 <div class="card-header">
-                    <h2>المنشورات</h2>
+                    <h3>المنشورات</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body  table-responsive">
                     @if (session()->has('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
@@ -27,5 +27,5 @@
 </div>
 <br>
 <br>
-@livewireScripts
+
 @endsection

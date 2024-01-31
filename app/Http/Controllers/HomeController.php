@@ -28,6 +28,10 @@ class HomeController extends Controller
        $questions = question::with(['answer'=>function($query){$query->inRandomOrder();}])->inRandomOrder()->limit(3)->get();
        return view('home',compact('questions'));
     }
+    public function storeresult()
+    {
+        
+    }
 
 
 }

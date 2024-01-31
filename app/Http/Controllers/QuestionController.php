@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\QuestionCategory;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse; //important for ajax
 
 class QuestionController extends Controller
 {
@@ -15,20 +17,24 @@ class QuestionController extends Controller
 
     public function index()
     {
-        $questions = Question::latest()->paginate(6);
-        return view('questions.index',compact('questions'));
+        $questions = Question::with('questioncategory')->latest()->paginate(6);
+        $questioncategories = QuestionCategory::pluck('name', 'id'); //very important to add this becuse my create is on modal
+        return view('questions.index',compact('questions','questioncategories'));
     }
 
 
 
     public function create()
     {
-        return view('questions.create');
+
+        $questioncategories = QuestionCategory::pluck('name','id');
+
+        return view('questions.create',compact('questioncategories'));
     }
 
 
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $request->validate([
             'questiontext' => 'required',
@@ -45,9 +51,12 @@ class QuestionController extends Controller
             $input['imgpath'] = "$profileImage";
         }
 
-       Question::create($input);
+       $question=Question::create($input);
 
-    return redirect()->route('questions.index')->with('success','q created successfully.');
+
+       return response()->json(['message' => 'Question saved successfully']);
+
+    //return redirect()->route('questions.index')->with('success','q created successfully.');
 
     }
 
@@ -72,6 +81,7 @@ class QuestionController extends Controller
     {
         $validated = $request->validate([
             'questiontext'=>'required',
+            
 
         ]);
 
@@ -85,6 +95,8 @@ class QuestionController extends Controller
             $input['imgpath'] = "$profileImage";
         }else{
             $input['imgpath'] = $question->imgpath; // Retain the existing image path
+
+            // unset($input['image']);
         }
 
         $question->update($input);

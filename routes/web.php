@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Livewire\Adminq;
 use App\Livewire\ShowQuestion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,10 @@ Route::view('/index', 'index')->name('index');
 Route::view('/signs', 'signs');
 
 Route::view('/contact','contactscreate');
+
+
+
+Route::get('/questions', Adminq::class);
 
 Route::get('/rules', [App\Http\Controllers\PostController::class, 'index'])->name('rules');
 Route::get('posts/{post}', [App\Http\Controllers\PostController::class, 'show' ])->name('detials');

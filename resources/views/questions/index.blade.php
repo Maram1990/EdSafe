@@ -6,10 +6,10 @@
 
     <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-11">
             <div class="card">
                 <div class="card-header">
-                    <h2>الأسئلة</h2>
+                    <h3>الأسئلة</h3>
                 </div>
                 <div class="card-body">
 <div class="row">
@@ -19,10 +19,11 @@
 
             <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"> ajax </button>
             <!-- Modal -->
+            @include('questions.createmodal')
 
         </div>
 
-
+<br>
     </div>
 </div>
 <br>
@@ -32,13 +33,20 @@
 
 </div>
 @endif
-<br>
+@if($errors->any())
+  <ul class="alert alert-danger" role="alert">
+    @foreach($errors->all() as $error)
+      <li>{{$error}}</li>
+    @endforeach
+  </ul>
+@endif
 <div class="row">
- <div class="col-lg-12 margin-tb">
-    <table class="table table-bordered">
+ <div class="col-lg-12 margin-tb  table-responsive">
+    <table class="table table-bordered ">
         <tr>
-            <th>المعرف</th>
+            <th>#</th>
             <th>نص السؤال</th>
+            <th>نوع السؤال</th>
             <th>الصورة</th>
             <th width=320px;>Action</th>
         </tr>
@@ -46,7 +54,8 @@
         <tr>
             <td>{{ $question->id }}</td>
             <td>{{ $question->questiontext }}</td>
-            <td> <img src="/image/{{ $question->imgpath }}" width="80px"></td>
+            <td>{{ $question->questioncategory->name}}
+            <td> <img src="/images/{{ $question->imgpath }}" width="80px"></td>
             <td>
 
              <form action="{{ route('questions.destroy',$question->id) }}" method="POST">
@@ -79,15 +88,57 @@
     </table>
  </div>
 </div>
+<div class="d-flex justify-content-center">
+    {!! $questions->links() !!}
 
-{!! $questions->links() !!}
+  <!--  to add additional parameter betwenn links and -> appends(['sort' => 'department']) -->
 
-@include('questions.createmodal')
+  <!-- to convert result to json we add addinal rout:/convert-to-json
+    Route::get('/convert-to-json', function () {
+    return App\Employee::paginate(5);
+    });
+   -->
+</div>
+
+
+
 </div>
 </div>
 </div>
 </div>
 </div>
+<script>
+    createQuestionForm.addEventListener('submit', function(e) {
+ e.preventDefault();
+
+ var formData = new FormData(createQuestionForm);
+
+ fetch("{{ route('questions.store') }}", {
+     method: 'POST',
+     body: formData
+ })
+ .then(function(response) {
+     if (response.ok) {
+         $('#exampleModal').modal('hide');
+         // Clear the form inputs
+         createQuestionForm.reset();
+         // Trigger the event to load the updated questions
+         document.dispatchEvent(new Event('questionAdded'));
+     } else {
+         throw new Error('Error: ' + response.status);
+     }
+ })
+ .catch(function(error) {
+     console.log(error);
+ })
+ .finally(function() {
+     // Manually close the modal
+     var modalElement = document.getElementById('exampleModal');
+     var modalInstance = bootstrap.Modal.getInstance(modalElement);
+     modalInstance.hide();
+ });
+});
+     </script>
 
 
 @endsection

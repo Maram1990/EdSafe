@@ -1,4 +1,4 @@
-@extends('questions.layout')
+@extends('layouts.responsive')
 <br>
 @section('content')
 <br>
@@ -9,7 +9,7 @@
 <form action="{{ route('questions.answers.update',[$answer->question_id, $answer->id]) }}" method="POST">
     @csrf
     @method('PUT')
-    
+
 
      <div class="row justify-content-center ">
         <div class="col-xs-8 col-sm-8 col-md-8 ">

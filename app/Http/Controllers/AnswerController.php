@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Answer;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AnswerController extends Controller
 {
@@ -33,6 +34,19 @@ class AnswerController extends Controller
      */
     public function store($question_id,Request $request)
     {
+
+        // Check if any answer is already marked as correct for this question
+        $hasCorrectAnswer = Answer::where('question_id', $question_id)->where('istrue', true)->exists();
+
+        if ($hasCorrectAnswer && $request->has('istrue')) {
+            // Flash a warning message to the user
+            Session::flash('message', 'لا يمكن اضافة اكتر من اجابة صحيحة');
+            Session::flash('alert-class', 'alert-warning');
+
+            return redirect()->back()->withInput();
+        }
+
+
         Answer::create($request->all() + ['question_id' => $question_id]);
         return redirect()->route('questions.answers.index', $question_id);
     }
@@ -60,7 +74,7 @@ class AnswerController extends Controller
     {
 
         $answer->update([
-             
+
             'title' => $request->input('title'),
             'istrue' => $request->has('istrue') ? true : false
         ]);

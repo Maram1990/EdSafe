@@ -23,6 +23,16 @@
                 <img class="img-fluid" src="/images/{{ $question->imgpath }}" width="300px">
                 </div>
               </div>
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <label for="question_category_id"> <strong>نوع السؤال</strong> </label>
+                    <select class="form-control" name="question_category_id" id="question_category_id">
+                        @foreach($questioncategories as $id => $entry)
+                            <option value="{{ $id }}" {{ (old('question_category_id') ? old('question_category_id') : $questions->question_category_id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
            </div>
 
            <div class="modal-footer">

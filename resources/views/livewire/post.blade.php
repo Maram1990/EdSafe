@@ -1,4 +1,4 @@
-<div>
+<div class=" table-responsive">
     @if (session()->has('message'))
     <div class="alert alert-success">
         {{ session('message') }}
@@ -11,7 +11,7 @@
     @include('livewire.create')
 @endif
 
-<table class="table table-bordered mt-5">
+<table class="table table-bordered mt-5 ">
     <thead>
         <tr>
             <th>#</th>
@@ -37,5 +37,9 @@
     </tbody>
 
 </table>
-{{ $posts->links() }}
+
+<div class="d-flex justify-content-center">
+    {{ $posts->links() }}
+</div>
+
 </div>

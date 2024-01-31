@@ -1,4 +1,4 @@
-@extends('questions.layout')
+@extends('layouts.responsive')
 <br><br><br><br>
 @section('content')
 <div class="row">
@@ -13,7 +13,7 @@
 </div>
 @if (session('success'))
 <div class="alert alert-success" role="alert">
-   {{ session ('success')}} 
+   {{ session ('success')}}
 
 </div>
 
@@ -27,7 +27,7 @@
 @endif
 
 
-<form action="{{ route('questions.store') }}" method="POST" enctype="multipart/form-data">
+<form  action="{{ route('questions.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
      <div class="row">
@@ -44,6 +44,17 @@
             </label>
 
           </div>
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>نوع السؤال</strong>
+                <label for="question_category_id"> k,u hgchg</label>
+                <select class="form-control name=question_category_id" id="question_category_id">
+                    @foreach($questioncategories as $id => $entry)
+                        <option value="{{ $id }}" {{ old('question_category_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
 
         <div class="col-xs-8 col-sm-8 col-md-8 text-center">
                 <button type="submit" class="btn btn-primary">حفظ</button>
@@ -51,4 +62,6 @@
     </div>
 
 </form>
+
+
 @endsection

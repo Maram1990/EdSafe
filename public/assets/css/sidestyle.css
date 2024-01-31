@@ -31,24 +31,41 @@ body {
 .wrapper {
     display: flex;
 }
-
-.main {
-    min-height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    transition: all 0.35s ease-in-out;
-    background-color: #fafbfe;
+.card {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 6px 0 rgba(0, 0, 0, 0.19);
 }
 
 #sidebar {
-    width: 70px;
-    min-width: 70px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70px; /* Adjust the width as needed */
+    height: 100vh;
     z-index: 1000;
-    transition: all .25s ease-in-out;
     background-color: #eceefe;
+    transition: width 0.25s ease-in-out; /* Add transition to width property */
     display: flex;
     flex-direction: column;
-}
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  #sidebar.expand {
+    width: 260px; /* Adjust the expanded width as needed */
+  }
+
+  .main {
+    margin-right: 70px; /* Set the same width as the initial sidebar width */
+    min-height: 100vh;
+    width: calc(100% - 70px); /* Subtract the sidebar width from the full width */
+    overflow: hidden;
+    transition: margin-right 0.35s ease-in-out; /* Add transition to margin-right property */
+    background-color: #fafbfe;
+  }
+
+
+  #sidebar.expand + .main {
+    margin-right: 260px; /* Set the same width as the expanded sidebar width */
+  }
 
 #sidebar.expand {
     width: 260px;
@@ -64,12 +81,12 @@ body {
 }
 
 .toggle-btn img {
-    size:font-size: 100%;
+    size: 100%;
 
 }
 
 .sidebar-logo {
-    margin: auto 0;
+    margin: auto 1rem;
 }
 
 .sidebar-logo a {
@@ -92,7 +109,7 @@ a.sidebar-link {
     padding: .625rem 1.625rem;
     color: #2d405f;
     display: block;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     white-space: nowrap;
     border-left: 3px solid transparent;
 }
@@ -105,9 +122,10 @@ a.sidebar-link {
 }
 
 a.sidebar-link:hover {
-    background-color: #3b7ddd;
-     color:#eceefe;
-     border-radius: 10px;
+   /* background-color: #3b7ddd;*/
+    background-color: #045cac;
+    color:#eceefe;
+    border-radius: 5px;
 }
 
 .sidebar-item {
@@ -115,21 +133,34 @@ a.sidebar-link:hover {
 
 }
 
+.sidebar-dropdown{
+    background-color: #e3e6ff;
+    padding-right: 3.5rem;
+
+}
+
 #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
     position: absolute;
     top: 0;
-    left: 70px;
-    background-color: #0e2238;
+    right: 70px;
+    background-color: #eceefe;
     padding: 0;
-    min-width: 15rem;
+    min-width: 10rem;
     display: none;
 }
+
+
+#sidebar:not(.expand) .sidebar-link[data-bs-toggle="collapse"]::before {
+    float: left;
+    margin-left: 0.5rem;
+  }
 
 #sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
     display: block;
     max-height: 15em;
     width: 100%;
     opacity: 1;
+
 }
 
 #sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
@@ -145,7 +176,62 @@ a.sidebar-link:hover {
     transition: all .2s ease-out;
 }
 
+
 #sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
     transform: rotate(45deg);
     transition: all .2s ease-out;
+
 }
+
+/* important to add this if the default class of sidebar is expand */
+
+@media (max-width: 768px) {
+    #sidebar {
+      width: 70px;
+      min-width: 70px;
+    }
+
+    #sidebar.expand {
+      width: 70px;
+      min-width: 70px;
+    }
+
+    .sidebar-link span {
+        display: none;
+    }
+
+    .sidebar-dropdown  {
+        display: none;
+    }
+
+
+    .sidebar-logo {
+        display: none;
+    }
+
+    .main {
+      margin-right: 70px;
+      width: width: calc(100% - 70px);
+    }
+
+    #sidebar.expand + .main {
+      margin-right: 70px;
+    }
+
+
+}
+
+
+  /* very important to add this for make data-bs-toggle in the left when change the dir */
+
+  [dir="rtl"] .sidebar-link[data-bs-toggle="collapse"]::after {
+    right: auto;
+    left: 1.5rem;
+  }
+
+  [dir="rtl"] #sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    right: auto;
+    left: 1.5rem;
+  }
+
+

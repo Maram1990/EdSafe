@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar"  dir="rtl">
 
 <head>
     <meta charset="UTF-8">
@@ -16,14 +16,14 @@
 
 <body>
     <div class="wrapper">
-        <aside id="sidebar">
+        <aside id="sidebar" class="expand" >
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
-                    <img class="img-fluid" src="/assets/img/لوغو وزارة النقل  للخلفية.png" alt="" class="img-fluid">
+                    <img   src="/assets/img/لوغو وزارة النقل.png" alt="" class="img-fluid">
                 </button>
-               <!-- <div class="sidebar-logo">
+               <div class="sidebar-logo">
                     <a href="#">السلامة المرورية</a>
-                </div>-->
+                </div>
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
@@ -33,15 +33,24 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                        <i class="lni lni-protection"></i>
+                        <span>Auth</span>
+                    </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Register</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
                     <a href="{{ url('/questions')}}" class="sidebar-link">
                         <i class="lni lni-question-circle"></i>
                         <span>الأسئلة</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link " >
-                        <i class="lni lni-protection"></i>
-                        <span>{{ Auth::user()->name }}</span>
                     </a>
                 </li>
 
@@ -59,10 +68,16 @@
                 </li>
             </ul>
             <div class="sidebar-footer">
-                <a href="{{ route('logout') }}" class="sidebar-link">
+                <a href="{{ route('logout') }}" class="sidebar-link" method="POST" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
                     <i class="lni lni-exit"></i>
+
                     <span>تسجيل خروج</span>
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"  >
+                    @csrf
+                </form>
             </div>
         </aside>
         <div class="main p-3">

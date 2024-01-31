@@ -10,7 +10,7 @@ use Livewire\WithPagination;
 class Posts extends Component
 {
 
-    public $Posts, $slug, $title, $content, $post_id;
+    public $Posts,  $title, $content, $post_id;
     public $updateMode = false;
 
     /**
@@ -24,7 +24,7 @@ class Posts extends Component
 
     public function render()
     {
-       $posts = Post::paginate(5);
+       $posts = Post::latest()->paginate(8);
         return view('livewire.post',compact('posts'));
     }
 
@@ -34,7 +34,7 @@ class Posts extends Component
      * @var array
      */
     private function resetInputFields(){
-        $this->slug = '';
+
         $this->title = '';
         $this->content = '';
     }

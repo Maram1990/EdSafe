@@ -1,4 +1,4 @@
-@extends('questions.layout')
+@extends('layouts.responsive')
 @section('content')
 <br>
 <br>
@@ -15,16 +15,19 @@
         </div>
     </div>
 </div>
+<br>
+@if(Session::has('message'))
+    <div class="alert  alert-danger " role="alert">
+        {{ Session::get('message') }}
+    </div>
+@endif
 
 
 
 <form action="{{ route('questions.answers.store', $question_id) }}" method="POST">
     @csrf
 
-     <div class="row">
-        <div class="col-xs-8 col-sm-8 col-md-8">
-
-        </div>
+    <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8">
             <div class="form-group">
                 <label for="title">الاجابة</label>
@@ -36,7 +39,6 @@
             <input type="checkbox" name="istrue" value="1"  {{ old('istrue') }} >
 
         </div>
-
         <div class="col-xs-8 col-sm-8 col-md-8 ">
                 <button type="submit" class="btn btn-primary">حفظ</button>
         </div>

@@ -44,21 +44,21 @@
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                  <div class="modal-header ">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
                   </div>
-                  <div class="modal-body" id="scoreModalBody">
+                  <div class="modal-body " id="scoreModalBody">
                     your score is:
                   </div>
-                  <div class="modal-footer">
+                  <div class="modal-footer justify-content-center">
+                    <a class="btn btn-primary" href="{{route('home')}}" role="button">إعادة امتحان</a>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a class="btn btn-primary" href="{{route('home')}}" role="button">retake</a>
                   </div>
                 </div>
               </div>
             </div>
-                          <br>
+            <br>
         </div>
     </div>
 </div>
@@ -70,7 +70,6 @@
     var answeredQuestionCount = 0;
     var questionContainer = document.querySelector('.quiz');
     var questionCount = questionContainer.getElementsByClassName('border').length;
-    console.log("Number of questions: " + questionCount);
 
     function check(obj) {
         if (obj.querySelector('input').value == 1) {
@@ -95,8 +94,17 @@
         var scoreModalBody = document.getElementById('scoreModalBody');
 
         if (answeredQuestionCount === questionCount) {
-            resultButton.style.display = 'block'; // Hide the button
+            resultButton.style.display = 'block';
             scoreModalBody.textContent = "Your score is: " + score;
+            //if (questionCount !== answeredQuestionCount) {
+            // resultButton.disabled = true; // Disable the button
+             // resultButton.classList.add('button-disabled'); // Add the CSS class
+             /*.button-disabled {
+            /* Styles for the disabled or hidden state */
+            //opacity: 0.5;
+            //cursor: not-allowed;
+            /* Add any other desired styles */
+}
         }
     }
 

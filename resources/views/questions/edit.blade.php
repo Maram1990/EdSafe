@@ -20,7 +20,7 @@
 
 <div class="container justify-content-center">
 
-    <form action="{{ route('questions.update',$question->id) }}" method="POST">
+    <form action="{{ route('questions.update',$question->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -32,8 +32,9 @@
                 </div>
             </div>
             <div class="col-xs-8 col-sm-8 col-md-8">
-                <strong>اختر صورة</strong>
-                    <input class="form-control" type="file" name="imgpath">
+                <label for="imgpath" class="form-label"><strong>ختر صورةا</strong>
+                        <input class="form-control" type="file" name="imgpath" id="imgpath">
+                </label>
                     <img src="/images/{{ $question->imgpath }}" width="300px">
 
 

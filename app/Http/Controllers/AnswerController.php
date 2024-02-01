@@ -73,6 +73,17 @@ class AnswerController extends Controller
     public function update($question_id,Request $request, Answer $answer)
     {
 
+        // Check if any answer is already marked as correct for this question
+        $hasCorrectAnswer = Answer::where('question_id', $question_id)->where('istrue', true)->exists();
+
+        if ($hasCorrectAnswer && $request->has('istrue')) {
+            // Flash a warning message to the user
+            Session::flash('message', 'لا يمكن اضافة اكتر من اجابة صحيحة');
+            Session::flash('alert-class', 'alert-warning');
+
+            return redirect()->back()->withInput();
+        }
+        
         $answer->update([
 
             'title' => $request->input('title'),

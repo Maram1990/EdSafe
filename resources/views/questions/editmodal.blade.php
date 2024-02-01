@@ -1,4 +1,4 @@
-<form action="{{ route('questions.update',$question->id) }}" method="POST">
+<form action="{{ route('questions.update',$question->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="modal fade" id="exampleModale{{$question->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

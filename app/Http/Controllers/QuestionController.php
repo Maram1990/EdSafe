@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
-use App\Models\QuestionCategory;
 use Illuminate\Http\Request;
+use App\Models\QuestionCategory;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\JsonResponse; //important for ajax
 
 class QuestionController extends Controller
@@ -52,9 +53,9 @@ class QuestionController extends Controller
         }
 
        $question=Question::create($input);
+       Session::flash('success', 'تمت إضافة السؤال بنجاح.');
 
-
-       return response()->json(['message' => 'Question saved successfully']);
+       return response()->json(['success' => true]);
 
     //return redirect()->route('questions.index')->with('success','q created successfully.');
 
@@ -81,22 +82,25 @@ class QuestionController extends Controller
     {
         $validated = $request->validate([
             'questiontext'=>'required',
-            
+
 
         ]);
 
 
-        $input = $request->all();
-
         if ($imgpath = $request->file('imgpath')) {
+            // Delete the existing image from the "images" folder
+            $existingImagePath = public_path('images/' . $question->imgpath);
+            if (file_exists($existingImagePath)) {
+                unlink($existingImagePath);
+            }
+
+            // Save the new image
             $destinationPath = 'images/';
             $profileImage = date('YmdHis') . "." . $imgpath->getClientOriginalExtension();
             $imgpath->move($destinationPath, $profileImage);
-            $input['imgpath'] = "$profileImage";
-        }else{
+            $input['imgpath'] = $profileImage;
+        } else {
             $input['imgpath'] = $question->imgpath; // Retain the existing image path
-
-            // unset($input['image']);
         }
 
         $question->update($input);
@@ -109,11 +113,18 @@ class QuestionController extends Controller
 
     public function destroy(Question $question)
     {
-        $question->delete();
-        if (request()->ajax()) {
-            return response()->json(['success' => true]);
-        }
+        // Delete the associated image from the "images" folder
+    $imagePath = public_path('images/' . $question->imgpath);
+    if ($question->imgpath && file_exists($imagePath) && is_file($imagePath)) {
+        unlink($imagePath);
+    }
 
-        return redirect()->route('questions.index')->with('success', 'تم حذف السؤال بنجاح');
+    $question->delete();
+
+    if (request()->ajax()) {
+        return response()->json(['success' => true]);
+    }
+
+    return redirect()->route('questions.index')->with('success', 'تم حذف السؤال بنجاح');
     }
 }

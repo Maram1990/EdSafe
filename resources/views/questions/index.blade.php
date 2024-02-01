@@ -26,7 +26,6 @@
 <br>
     </div>
 </div>
-<br>
 @if (session('success'))
 <div class="alert alert-success" role="alert">
    {{ session ('success')}}
@@ -138,6 +137,18 @@
      modalInstance.hide();
  });
 });
+
+// Handle the AJAX response   for flash message it works but with blank page betwen
+/*
+success: function (response) {
+        // Display the success message immediately
+        if (response.message) {
+            $('.alert-success').text('تمت إضافة السؤال بنجاح.').show();
+        }
+
+        // Close the modal or perform any other necessary actions
+        $('#exampleModal').modal('hide');
+    }  */
      </script>
 
 

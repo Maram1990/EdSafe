@@ -6,6 +6,11 @@
 <br>
 <br>
 <br>
+@if(Session::has('message'))
+    <div class="alert  alert-danger " role="alert">
+        {{ Session::get('message') }}
+    </div>
+@endif
 <form action="{{ route('questions.answers.update',[$answer->question_id, $answer->id]) }}" method="POST">
     @csrf
     @method('PUT')

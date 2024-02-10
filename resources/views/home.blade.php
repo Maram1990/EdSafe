@@ -36,7 +36,7 @@
 
             <!-- Button trigger modal -->
                <button id="resultButton" style="display: none" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Launch static backdrop modal
+                النتيجة
                </button>
                <br>
 
@@ -106,7 +106,7 @@
             /* Add any other desired styles */
 }
         }
-    }
+
 
 </script>
 

@@ -83,7 +83,7 @@ class AnswerController extends Controller
 
             return redirect()->back()->withInput();
         }
-        
+
         $answer->update([
 
             'title' => $request->input('title'),
@@ -102,4 +102,81 @@ class AnswerController extends Controller
         $answer->delete();
         return redirect()->route('questions.answers.index', $question_id);
     }
+
+    public function storemultipleanswers($question_id, Request $request)
+{
+    // Check if any answer is already marked as correct for this question
+    $hasCorrectAnswer = Answer::where('question_id', $question_id)->where('istrue', true)->exists();
+
+    if ($hasCorrectAnswer && $request->has('answers')) {
+        // Flash a warning message to the user
+        Session::flash('message', 'لا يمكن اضافة اكتر من اجابة صحيحة');
+        Session::flash('alert-class', 'alert-warning');
+
+        return redirect()->back()->withInput();
+    }
+
+    if ($request->has('answers')) {
+        $correctAnswerFound = false;
+        foreach ($request->input('answers') as $answerData) {
+            $answer = new Answer();
+            $answer->question_id = $question_id;
+            $answer->title = $answerData['title'];
+            $answer->istrue = isset($answerData['istrue']);
+            $answer->save();
+
+            if ($answer->istrue && !$correctAnswerFound) {
+                $correctAnswerFound = true;
+            } else {
+                $answer->istrue = false;
+                $answer->save();
+            }
+        }
+    }
+    //or//
+
+
+    // Check if any answer is already marked as correct for this question
+    $hasCorrectAnswer = Answer::where('question_id', $question_id)->where('istrue', true)->exists();
+
+    if ($hasCorrectAnswer && $request->has('answers')) {
+        $correctAnswersCount = collect($request->input('answers'))->where('istrue', true)->count();
+
+        if ($correctAnswersCount > 1) {
+            // Flash an error message to the user
+            Session::flash('message', 'لا يمكن اضافة اكتر من اجابة صحيحة');
+            Session::flash('alert-class', 'alert-danger');
+
+            return redirect()->back()->withInput();
+        }
+    }
+
+    if ($request->has('answers')) {
+        $correctAnswerFound = false;
+        foreach ($request->input('answers') as $answerData) {
+            $answer = new Answer();
+            $answer->question_id = $question_id;
+            $answer->title = $answerData['title'];
+            $answer->istrue = isset($answerData['istrue']);
+            $answer->save();
+
+            if ($answer->istrue && !$correctAnswerFound) {
+                $correctAnswerFound = true;
+            } else {
+                $answer->istrue = false;
+                $answer->save();
+            }
+        }
+    }
+    // in index blade
+//@if(session('message'))
+//    <div class="alert {{ session('alert-class') }}">
+ //       {{ session('message') }}
+ //   </div>
+///@endif
+
+
+    return redirect()->route('questions.answers.index', $question_id);
+}
+
 }

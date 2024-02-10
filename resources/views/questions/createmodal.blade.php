@@ -41,6 +41,7 @@
                             </div>
                             @endif
                        </div>
+                       <br>
                        <div class="modal-footer">
                          <button type="submit" id="saveQuestionBtn" class="btn btn-primary">حفظ</button>
                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">عودة</button>

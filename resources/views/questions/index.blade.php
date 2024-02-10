@@ -17,7 +17,7 @@
         <div  class="pull-right">
             <a class="btn btn-success" href="{{ route('questions.create') }}" >  إضافة سؤال جديد</a>
 
-            <button  type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"> ajax </button>
+            <button  type="button" class="btn btn-success  rounded-circle " data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="lni lni-plus"></i> </button>
             <!-- Modal -->
             @include('questions.createmodal')
 
@@ -47,27 +47,27 @@
             <th>نص السؤال</th>
             <th>نوع السؤال</th>
             <th>الصورة</th>
-            <th width=320px;>Action</th>
+            <th width=300px;>Action</th>
         </tr>
         @foreach ($questions as $question)
         <tr>
             <td>{{ $question->id }}</td>
             <td>{{ $question->questiontext }}</td>
             <td>{{ $question->questioncategory->name}}
-            <td> <img src="/images/{{ $question->imgpath }}" width="80px"></td>
+            <td> <img src="/images/{{ $question->imgpath }}" width="70px" height="70px"></td>
             <td>
 
              <form action="{{ route('questions.destroy',$question->id) }}" method="POST">
-                    <a class="btn btn-secondary" href="{{ route('questions.answers.index', $question->id) }}">الأجوبة</a>
+                    <a class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="الأجوبة" href="{{ route('questions.answers.index', $question->id) }}"><i class="lni lni-radio-button"></i> </a>
 
                     <!-- <a class="btn btn-info" href="{{ route('questions.show',$question->id) }}">عرض</a>-->
-                    <button  type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModals{{$question->id}}"> عرض </button>
+                    <button  type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModals{{$question->id}}"><i class="lni lni-eye"></i></button>
                     <!--<a class="btn btn-primary" href="{{ route('questions.edit',$question->id) }}">تعديل</a>-->
-                    <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModale{{$question->id}}"> تعديل </button>
+                    <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModale{{$question->id}}"> <i class="lni lni-pencil"></i></button>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">حذف</button>
-                    <button  type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModald{{$question->id}}"> deletajax </button>
+                    <button type="submit" class="btn btn-danger"><i class="lni lni-trash-can"></i></button>
+                    <button  type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModald{{$question->id}}"> حذف</button>
 
                     @include('questions.showmodal')
 

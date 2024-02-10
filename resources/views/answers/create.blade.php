@@ -49,4 +49,24 @@
     </div>
 
 </form>
+
+
+<!-- <div class="row">
+        @for ($i = 1; $i <= 3; $i++)
+        <div class="col-xs-8 col-sm-8 col-md-8">
+            <div class="form-group">
+                <label for="title">الاجابة رقم {{ $i }}</label>
+                <input type="text" name="answers[{{ $i }}][title]" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="istrue">صحيح</label><br>
+            <input type="checkbox" name="answers[{{ $i }}][istrue]" value="1">
+        </div>
+        @endfor
+
+        <div class="col-xs-8 col-sm-8 col-md-8">
+            <button type="submit" class="btn btn-primary">حفظ</button>
+        </div>
+    </div>-->
 @endsection
